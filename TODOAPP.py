@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, simpledialog
 
 class ToDoListApp:
     def __init__(self, root):
@@ -38,7 +38,7 @@ class ToDoListApp:
 
     def complete_task(self):
         try:
-            task_index = int(messagebox.askstring("Complete Task", "Enter the task number you want to mark as completed:"))
+            task_index = int(simpledialog.askstring("Complete Task", "Enter the task number you want to mark as completed:"))
             self.todo_list.complete_task(task_index)
             messagebox.showinfo("Success", "Task marked as completed!")
         except ValueError:
@@ -46,8 +46,8 @@ class ToDoListApp:
 
     def update_task(self):
         try:
-            task_index = int(messagebox.askstring("Update Task", "Enter the task number you want to update:"))
-            new_description = messagebox.askstring("Update Task", "Enter new description:")
+            task_index = int(simpledialog.askstring("Update Task", "Enter the task number you want to update:"))
+            new_description = simpledialog.askstring("Update Task", "Enter new description:")
             self.todo_list.update_task(task_index, description=new_description)
             messagebox.showinfo("Success", "Task updated successfully!")
         except ValueError:
@@ -55,7 +55,7 @@ class ToDoListApp:
 
     def remove_task(self):
         try:
-            task_index = int(messagebox.askstring("Remove Task", "Enter the task number you want to remove:"))
+            task_index = int(simpledialog.askstring("Remove Task", "Enter the task number you want to remove:"))
             self.todo_list.remove_task(task_index)
             messagebox.showinfo("Success", "Task removed successfully!")
         except ValueError:
